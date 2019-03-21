@@ -9,37 +9,37 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!--Left stack panel-->
         <StackPanel>
-            
+
             <!--Run button-->
             <Button Margin="10" Padding="20" Content="Pokreni" Height="80" Grid.Column="1" FontSize="24" HorizontalAlignment="Center"/>
 
             <!--Choose month-->
             <TextBlock Text="Odaberi mjesec:" Margin="0 0 0 5" HorizontalAlignment="Center"></TextBlock>
-            <Calendar></Calendar>
+            <Calendar x:Name="SelectMonthCalendar" PreviewMouseUp="SelectMonthCalendar_PreviewMouseUp" Loaded="SelectMonthCalendar_Loaded" DisplayModeChanged="SelectMonthCalendar_DisplayModeChanged" DisplayMode="Year" Language="hr-HR"></Calendar>
 
             <!--Save location-->
             <TextBlock Margin="22,10,0,10" Text="Save location:"/>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Margin="20,0,182,0" Grid.ColumnSpan="2"></TextBox>
-                <Button Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Padding="10 0 10 0" Margin="33,0,0,0"></Button>
+                <TextBox IsReadOnly="True" Background="#eee" Margin="20,0,100,0" Grid.ColumnSpan="2"></TextBox>
+                <Button Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Padding="10 0 10 0"></Button>
 
             </Grid>
         </StackPanel>
 
-        
+
         <!--Right stack panel-->
         <StackPanel Grid.Column="1">
-            
+
             <!--First row-->
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -54,7 +54,7 @@
                     <CheckBox Margin="0 3" Content="Pitaj za bolovanje"></CheckBox>
                     <CheckBox Margin="0 3" Content="Pitaj za put"></CheckBox>
                     <Button Margin="0 5" Content="Ukloni"></Button>
-                    
+
                 </StackPanel>
 
                 <StackPanel Margin="5" Grid.Column="1">
