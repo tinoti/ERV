@@ -134,17 +134,27 @@ namespace ERV
 		//Starts the writing process
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
+			//Check what checkboxes are ticked in every user
+			foreach (User user in ListOfUserObject)
+			{
+				//Vacation handler
+				if((bool)user.CheckBoxList.FirstOrDefault(b => b.Name == "vacation").IsChecked)
+				{
+					//Display calendar
+					PopUpWindow PopUpWindow = new PopUpWindow();
 
-			//foreach (User user in ListOfUserObject)
-			//{
-			//	foreach (CheckBox checkBox in user.CheckBoxList)
-			//	{
-			//		if ((bool)checkBox.IsChecked)
-			//		{
-			//			MessageBox.Show(user.Name + " checked: " + checkBox.Name);
-			//		}
-			//	}
-			//}
+					PopUpWindow.Owner = App.Current.MainWindow;
+					GrayRectangle.Visibility = Visibility.Visible;
+					PopUpWindow.HorizontalAlignment = HorizontalAlignment.Center;
+					PopUpWindow.ShowDialog();
+					
+					
+
+
+				}
+
+			
+			}
 
 
 		}

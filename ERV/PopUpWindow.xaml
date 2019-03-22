@@ -1,0 +1,40 @@
+﻿<Window x:Class="ERV.PopUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERV"
+        mc:Ignorable="d"
+        Title="PopUpWindow" Height="300" Width="300">
+
+    <StackPanel>
+        <TextBlock Margin="0 10" Text="Unesi godišnji za korisnika: Saša Ruškov" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                
+                <!--Calendar-->
+                <Calendar x:Name="PopUpCalendar" Margin="0 10" Language="hr-HR" SelectionMode="MultipleRange" HorizontalAlignment="Center" Loaded="PopUpCalendar_Loaded"></Calendar>
+                <!--Button-->
+                
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="0 5">
+                
+                <!--Instructions-->
+                <TextBlock Margin="0 10" Text="Vuci mišem za označavanje više datuma" TextWrapping="Wrap"></TextBlock>
+                <TextBlock Text="Drži ctrl za označavanje više odvojenih datuma" TextWrapping="Wrap" Margin="0 10"></TextBlock>
+
+            </StackPanel>
+        </Grid>
+
+        <Button Content="Ok" HorizontalAlignment="Center" Padding="15 0" ></Button>
+    </StackPanel>
+    
+    
+    
+</Window>

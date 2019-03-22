@@ -1,4 +1,4 @@
-﻿<Window x:Class="ERV.MainWindow"
+﻿<Window x:Class="ERV.MainWindow" x:Name="MainWindowObject"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,103 +7,61 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="410.916" Width="829.313"
         Loaded="Window_Loaded">
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
-        <!--Left stack panel-->
-        <StackPanel>
-
-            <!--Run button-->
-            <Button Margin="10" Padding="20" Content="Pokreni" Height="80" Grid.Column="1" FontSize="24" HorizontalAlignment="Center" Click="Button_Click"/>
-
-            <!--Choose month-->
-            <TextBlock Text="Odaberi mjesec:" Margin="0 0 0 5" HorizontalAlignment="Center"></TextBlock>
-            <Calendar x:Name="SelectMonthCalendar" PreviewMouseUp="SelectMonthCalendar_PreviewMouseUp" Loaded="SelectMonthCalendar_Loaded" DisplayModeChanged="SelectMonthCalendar_DisplayModeChanged" DisplayMode="Year" Language="hr-HR"></Calendar>
-
-            <!--Save location-->
-            <TextBlock Margin="22,10,0,10" Text="Save location:"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                <TextBox x:Name="SaveLocationTextBox" IsReadOnly="True" Background="#eee" Margin="20,0,100,0" Grid.ColumnSpan="2" Loaded="SaveLocationTextBox_Loaded"></TextBox>
-                <Button x:Name="SaveLocationButton" Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Padding="10 0 10 0" Click="SaveLocationButton_Click"></Button>
-
-            </Grid>
-        </StackPanel>
-
-
-        <!--Right stack panel-->
-
-        <Grid x:Name="UserGrid" Grid.Column="1">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
+            <!--Left stack panel-->
+            <StackPanel>
 
+                <!--Run button-->
+                <Button Margin="10" Padding="20" Content="Pokreni" Height="80" Grid.Column="1" FontSize="24" HorizontalAlignment="Center" Click="Button_Click"/>
+
+                <!--Choose month-->
+                <TextBlock Text="Odaberi mjesec:" Margin="0 0 0 5" HorizontalAlignment="Center"></TextBlock>
+                <Calendar x:Name="SelectMonthCalendar" PreviewMouseUp="SelectMonthCalendar_PreviewMouseUp" Loaded="SelectMonthCalendar_Loaded" DisplayModeChanged="SelectMonthCalendar_DisplayModeChanged" DisplayMode="Year" Language="hr-HR"></Calendar>
+
+                <!--Save location-->
+                <TextBlock Margin="22,10,0,10" Text="Save location:"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="SaveLocationTextBox" IsReadOnly="True" Background="#eee" Margin="20,0,100,0" Grid.ColumnSpan="2" Loaded="SaveLocationTextBox_Loaded"></TextBox>
+                    <Button x:Name="SaveLocationButton" Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Padding="10 0 10 0" Click="SaveLocationButton_Click"></Button>
+
+                </Grid>
+            </StackPanel>
+
+
+            <!--Right stack panel-->
+
+            <Grid x:Name="UserGrid" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+            </Grid>
 
         </Grid>
-        <!--<StackPanel Grid.Column="1">
-
-            --><!--First row--><!--
-            <Grid x:Name="FirstGrid">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-            
-
-
-            </Grid>
-
-            --><!--Second row--><!--
-            <Grid x:Name="SecondGrid">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                --><!--<StackPanel Margin="5" >
-                    <TextBlock Margin="0 0 0 4" FontWeight="Bold" Text="Marko Spiljak" HorizontalAlignment="Center"></TextBlock>
-                    <CheckBox Margin="0 3" Content="Pitaj za godišnji"></CheckBox>
-                    <CheckBox Margin="0 3" Content="Pitaj za bolovanje"></CheckBox>
-                    <CheckBox Margin="0 3" Content="Pitaj za put"></CheckBox>
-                    <Button Margin="0 5" Content="Ukloni"></Button>
-
-                </StackPanel>-->
-
-                <!--<StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="5">
-                    <Button Margin="0 5" Content="Dodaj korisnika" ></Button>
-                </StackPanel>--><!--
-
-
-            </Grid>
-
-            --><!--Third row--><!--
-            <Grid x:Name="ThirdGrid">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-            </Grid>
-
-        </StackPanel>-->
-
+        <Rectangle x:Name="GrayRectangle" Visibility="Hidden" Opacity="0.5" Fill="#FF767676">
+ 
+        </Rectangle>
     </Grid>
+    
 </Window>

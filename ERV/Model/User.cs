@@ -59,19 +59,19 @@ namespace ERV.Model
 			CheckBox CheckBoxOne = new CheckBox();
 			CheckBoxOne.Content = "Pitaj za godišnji";
 			CheckBoxOne.Margin = new Thickness(0, 3, 0, 3);
-			CheckBoxOne.Name = "godisnji";
+			CheckBoxOne.Name = "vacation";
 
 			//Second checkbox
 			CheckBox CheckBoxTwo = new CheckBox();
 			CheckBoxTwo.Content = "Pitaj za put";
 			CheckBoxTwo.Margin = new Thickness(0, 3, 0, 3);
-			CheckBoxTwo.Name = "put";
+			CheckBoxTwo.Name = "trip";
 
 			//Third checkbox
 			CheckBox CheckBoxThree = new CheckBox();
 			CheckBoxThree.Content = "Pitaj za bolovanje";
 			CheckBoxThree.Margin = new Thickness(0, 3, 0, 3);
-			CheckBoxThree.Name = "bolovanje";
+			CheckBoxThree.Name = "sick";
 
 			//Add to list
 			CheckBoxList.Add(CheckBoxOne);
