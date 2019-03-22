@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERV"
         mc:Ignorable="d"
-        Title="MainWindow" Height="410.916" Width="829.313">
+        Title="MainWindow" Height="410.916" Width="829.313"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -16,7 +17,7 @@
         <StackPanel>
 
             <!--Run button-->
-            <Button Margin="10" Padding="20" Content="Pokreni" Height="80" Grid.Column="1" FontSize="24" HorizontalAlignment="Center"/>
+            <Button Margin="10" Padding="20" Content="Pokreni" Height="80" Grid.Column="1" FontSize="24" HorizontalAlignment="Center" Click="Button_Click"/>
 
             <!--Choose month-->
             <TextBlock Text="Odaberi mjesec:" Margin="0 0 0 5" HorizontalAlignment="Center"></TextBlock>
@@ -30,80 +31,70 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBox IsReadOnly="True" Background="#eee" Margin="20,0,100,0" Grid.ColumnSpan="2"></TextBox>
-                <Button Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Padding="10 0 10 0"></Button>
+                <TextBox x:Name="SaveLocationTextBox" IsReadOnly="True" Background="#eee" Margin="20,0,100,0" Grid.ColumnSpan="2" Loaded="SaveLocationTextBox_Loaded"></TextBox>
+                <Button x:Name="SaveLocationButton" Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Padding="10 0 10 0" Click="SaveLocationButton_Click"></Button>
 
             </Grid>
         </StackPanel>
 
 
         <!--Right stack panel-->
-        <StackPanel Grid.Column="1">
 
-            <!--First row-->
-            <Grid>
+        <Grid x:Name="UserGrid" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+        </Grid>
+        <!--<StackPanel Grid.Column="1">
+
+            --><!--First row--><!--
+            <Grid x:Name="FirstGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-
-                <StackPanel Margin="5">
-                    <TextBlock Margin="0 0 0 4" FontWeight="Bold" Text="Valentino Tomašić" HorizontalAlignment="Center"></TextBlock>
-                    <CheckBox Margin="0 3" Content="Pitaj za godišnji"></CheckBox>
-                    <CheckBox Margin="0 3" Content="Pitaj za bolovanje"></CheckBox>
-                    <CheckBox Margin="0 3" Content="Pitaj za put"></CheckBox>
-                    <Button Margin="0 5" Content="Ukloni"></Button>
-
-                </StackPanel>
-
-                <StackPanel Margin="5" Grid.Column="1">
-                    <TextBlock Margin="0 0 0 4" FontWeight="Bold" Text="Saša Ruškov" HorizontalAlignment="Center"></TextBlock>
-                    <CheckBox Margin="0 3" Content="Pitaj za godišnji"></CheckBox>
-                    <CheckBox Margin="0 3" Content="Pitaj za bolovanje"></CheckBox>
-                    <CheckBox Margin="0 3" Content="Pitaj za put"></CheckBox>
-                    <Button Margin="0 5" Content="Ukloni"></Button>
-
-                </StackPanel>
-
-                <StackPanel Margin="5" Grid.Column="2">
-                    <TextBlock Margin="0 0 0 4" FontWeight="Bold" Text="Melita Bosek" HorizontalAlignment="Center"></TextBlock>
-                    <CheckBox Margin="0 3" Content="Pitaj za godišnji"></CheckBox>
-                    <CheckBox Margin="0 3" Content="Pitaj za bolovanje"></CheckBox>
-                    <CheckBox Margin="0 3" Content="Pitaj za put"></CheckBox>
-                    <Button Margin="0 5" Content="Ukloni"></Button>
-
-                </StackPanel>
+            
 
 
             </Grid>
 
-            <!--Second row-->
-            <Grid>
+            --><!--Second row--><!--
+            <Grid x:Name="SecondGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Margin="5" >
+                --><!--<StackPanel Margin="5" >
                     <TextBlock Margin="0 0 0 4" FontWeight="Bold" Text="Marko Spiljak" HorizontalAlignment="Center"></TextBlock>
                     <CheckBox Margin="0 3" Content="Pitaj za godišnji"></CheckBox>
                     <CheckBox Margin="0 3" Content="Pitaj za bolovanje"></CheckBox>
                     <CheckBox Margin="0 3" Content="Pitaj za put"></CheckBox>
                     <Button Margin="0 5" Content="Ukloni"></Button>
 
-                </StackPanel>
+                </StackPanel>-->
 
-                <StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="5">
+                <!--<StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="5">
                     <Button Margin="0 5" Content="Dodaj korisnika" ></Button>
-                </StackPanel>
+                </StackPanel>--><!--
 
 
             </Grid>
 
-            <!--Third row-->
-            <Grid>
+            --><!--Third row--><!--
+            <Grid x:Name="ThirdGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -112,7 +103,7 @@
 
             </Grid>
 
-        </StackPanel>
+        </StackPanel>-->
 
     </Grid>
 </Window>
