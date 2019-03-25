@@ -61,7 +61,7 @@ namespace ERV.Method
 		}
 
 		//Add "add user" button after the last user
-		public void AddNewUserButton(Grid UserGrid, int RowCounter, int ColumnCounter, int i)
+		public Button AddNewUserButton(Grid UserGrid, int RowCounter, int ColumnCounter, int i)
 		{
 			//i 3 and i 6 means the grid columns are full and the user needs to be displayed in the new row, so it updates row and set the column counter back to 0
 			if (i == 3 || i == 6)
@@ -77,6 +77,8 @@ namespace ERV.Method
 			Grid.SetColumn(Button, ColumnCounter);
 			Grid.SetRow(Button, RowCounter);
 			Button.VerticalAlignment = VerticalAlignment.Bottom;
+
+			return Button;
 		}
 
 	}

@@ -1,0 +1,14 @@
+﻿<Window x:Class="ERV.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERV"
+        mc:Ignorable="d"
+        Title="AddUserWindow" Height="110" Width="200">
+    <StackPanel>
+        <TextBlock Text="Unesi ime korisnika" HorizontalAlignment="Center"></TextBlock>
+        <TextBox x:Name="AddUserTextbox" Margin="0 5"></TextBox>
+        <Button x:Name="AddUserButton" Content="Unesi" HorizontalAlignment="Center" Padding="5 0" Margin="0 5" Click="AddUserButton_Click"></Button>
+    </StackPanel>
+</Window>

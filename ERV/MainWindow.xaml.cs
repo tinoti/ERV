@@ -112,7 +112,7 @@ namespace ERV
 				User.Id = i.ToString();
 
 				//Add remove user button event
-				User.Button.Click += new RoutedEventHandler(OnButtonClick);
+				User.Button.Click += new RoutedEventHandler(OnRemoveUserButtonClick);
 
 				//Add user to list
 				ListOfUserObject.Add(User);
@@ -126,7 +126,10 @@ namespace ERV
 			}
 
 			//Add the "add user" button after the last user
-			Helpers.AddNewUserButton(UserGrid, RowCounter, ColumnCounter, i);
+			Button AddUserButton =  Helpers.AddNewUserButton(UserGrid, RowCounter, ColumnCounter, i);
+
+			//Add AddUserButton event
+			AddUserButton.Click += new RoutedEventHandler(OnAddUserButtonClick);
 
 			
 
@@ -134,7 +137,7 @@ namespace ERV
 
 
 		//Event for the remove user button
-		public void OnButtonClick(object sender, RoutedEventArgs e)
+		public void OnRemoveUserButtonClick(object sender, RoutedEventArgs e)
 		{
 			//cast sender as button
 			Button1 Button = sender as Button1;
@@ -161,6 +164,35 @@ namespace ERV
 			//Reload window
 			System.Windows.Forms.Application.Restart();
 			System.Windows.Application.Current.Shutdown();
+		}
+
+		//Event for the add user button
+		public void OnAddUserButtonClick(object sender, RoutedEventArgs e)
+		{
+			AddUserWindow AddUserWindow = new AddUserWindow();
+			AddUserWindow.Owner = App.Current.MainWindow;
+
+			//Show the gray rectangle on main windows so that it's greyed out
+			GrayRectangle.Visibility = Visibility.Visible;
+
+			//ShowDialog() stops the main windows from going further until AddUserWindow is closed
+			AddUserWindow.ShowDialog();
+
+			//Hide the gray rectangle
+			GrayRectangle.Visibility = Visibility.Hidden;
+
+			//Write the new user in the text file
+			string FullPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Users.txt"));
+			using (System.IO.StreamWriter file =
+			new System.IO.StreamWriter(FullPath, true))
+			{
+				file.WriteLine(AddUserWindow.AddUserTextbox.Text);
+			}
+
+			//Reload window
+			System.Windows.Forms.Application.Restart();
+			System.Windows.Application.Current.Shutdown();
+
 		}
 
 		
