@@ -11,13 +11,29 @@ namespace ERV.Model
     class User
     {
 
+		private string id;
+
+		public string Id
+		{
+			get { return id; }
+			set
+			{
+				//Connect user and user button
+				id = value;
+				Button.id = id;
+				
+			}
+		}
+
+
+
 
 		public string Name { get; set; }
 		public StackPanel StackPanel { get; set; }
 		public TextBlock TextBlock { get; set; }
 		public List<CheckBox> CheckBoxList { get; set; }
-		public Button Button { get; set; }
-		public List<Date> Dates { get; set; }
+		public Button1 Button { get; set; }
+		public List<Date> Dates = new List<Date>();
 		
 		public void CreateProperties()
 		{
@@ -33,7 +49,7 @@ namespace ERV.Model
 			CheckBoxList = CreateCheckBoxes();
 
 			//Create Button
-			Button = new Button();
+			Button = new Button1();
 			Button.Margin = new Thickness(0, 3, 0, 3);
 			Button.Content = "Ukloni";
 
@@ -81,8 +97,27 @@ namespace ERV.Model
 			return CheckBoxList;
 		}
 
+		public void FillListWithDates(DateTime SelectedDate)
+		{
+			int NumberOfDays = DateTime.DaysInMonth(SelectedDate.Year, SelectedDate.Month);
+			
+			for(int i = 1; i <= NumberOfDays; i++)
+			{
+				DateTime Day = new DateTime(SelectedDate.Year, SelectedDate.Month, i);
+				Date date = new Date(Day);		
+
+				Dates.Add(date);
+			}
+
+		}
 
 
 
+
+	}
+
+	class Button1 : Button
+	{
+		public string id;
 	}
 }

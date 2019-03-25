@@ -32,7 +32,7 @@
             </StackPanel>
         </Grid>
 
-        <Button Content="Ok" HorizontalAlignment="Center" Padding="15 0" ></Button>
+        <Button x:Name="PopUpButton" Content="Ok" HorizontalAlignment="Center" Padding="15 0" Click="PopUpButton_Click"></Button>
     </StackPanel>
     
     

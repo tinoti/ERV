@@ -29,5 +29,10 @@ namespace ERV
 			//Default selected month is the previous month
 			PopUpCalendar.DisplayDate = DateTime.Now.AddMonths(-1);
 		}
+
+		private void PopUpButton_Click(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
 	}
 }

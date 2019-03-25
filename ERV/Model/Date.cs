@@ -8,6 +8,14 @@ namespace ERV.Model
 {
     class Date
     {
+		public Date(DateTime CurrentDate)
+		{
+			this.CurrentDate = CurrentDate;
+			Vacation = false;
+			Trip = false;
+			Sick = false;
+		}
+
 		public DateTime CurrentDate { get; set; }
 		public bool Vacation { get; set; }
 		public bool Trip { get; set; }
