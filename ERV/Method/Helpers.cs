@@ -20,7 +20,7 @@ namespace ERV.Method
 			System.IO.StreamReader file = new System.IO.StreamReader(FullPath);
 			while ((line = file.ReadLine()) != null)
 			{
-				string[] name = line.Split(',');
+				string[] name = line.Split('\n');
 				UsersList.Add(name[0]);
 			}
 			file.Close();
@@ -61,8 +61,15 @@ namespace ERV.Method
 		}
 
 		//Add "add user" button after the last user
-		public void AddNewUserButton(Grid UserGrid, int RowCounter, int ColumnCounter)
+		public void AddNewUserButton(Grid UserGrid, int RowCounter, int ColumnCounter, int i)
 		{
+			//i 3 and i 6 means the grid columns are full and the user needs to be displayed in the new row, so it updates row and set the column counter back to 0
+			if (i == 3 || i == 6)
+			{
+				RowCounter++;
+				ColumnCounter = 0;
+			}
+
 			Button Button = new Button1();
 			Button.Margin = new Thickness(3, 9, 3, 9);
 			Button.Content = "Dodaj korisnika";

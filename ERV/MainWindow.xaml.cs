@@ -92,6 +92,8 @@ namespace ERV
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 
+					
+
 			//Create users and add them to list
 			Helpers.LoadUsersInList(UsersList);
 			
@@ -124,30 +126,41 @@ namespace ERV
 			}
 
 			//Add the "add user" button after the last user
-			Helpers.AddNewUserButton(UserGrid, RowCounter, ColumnCounter);
+			Helpers.AddNewUserButton(UserGrid, RowCounter, ColumnCounter, i);
+
 			
+
 		}
 
 
 		//Event for the remove user button
 		public void OnButtonClick(object sender, RoutedEventArgs e)
 		{
-			MessageBox.Show("ayy");
-			//Button1 Button = sender as Button1;
-			//User User = ListOfUserObject.FirstOrDefault(b => b.id == Button.id);
-			//UsersList.Remove(User.Name);
-			//string FullPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Users.txt"));
-			//string line;
-			//System.IO.StreamWriter fileW = new System.IO.StreamWriter(FullPath);
-			//while ((line = fileW.ReadLine()) != null)
-			//{
-			//	string[] name = line.Split(',');
-			//	if (name[0] == User.Name)
-			//	{
-			//		fileW.WriteLine(" ");
-			//	}
-			//}
-			//fileW.Close();
+			//cast sender as button
+			Button1 Button = sender as Button1;
+
+			//Find the user with the same id as the button
+			User User = ListOfUserObject.FirstOrDefault(b => b.Id == Button.id);
+
+			//Full path to the text file that stores all the users
+			string FullPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Users.txt"));
+
+			//Create new temporary file
+			var tempFile = Path.GetTempFileName();
+
+			//Read all the lines and keep those that are not the current user name
+			var linesToKeep = File.ReadLines(FullPath).Where(l => l != User.Name);
+
+			//Write all lines to temp file
+			File.WriteAllLines(tempFile, linesToKeep);
+
+			//Delete the old file and write the temp file to the old file location
+			File.Delete(FullPath);
+			File.Move(tempFile, FullPath);
+
+			//Reload window
+			System.Windows.Forms.Application.Restart();
+			System.Windows.Application.Current.Shutdown();
 		}
 
 		
