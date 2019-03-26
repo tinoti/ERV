@@ -8,7 +8,7 @@
         Title="PopUpWindow" Height="300" Width="300">
 
     <StackPanel>
-        <TextBlock Margin="0 10" Text="Unesi godišnji za korisnika: Saša Ruškov" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
+        <TextBlock x:Name="PopUpWindowTextBlock" Margin="0 10"  HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"></ColumnDefinition>

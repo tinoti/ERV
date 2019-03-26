@@ -39,7 +39,6 @@
                 </Grid>
             </StackPanel>
 
-
             <!--Right stack panel-->
 
             <Grid x:Name="UserGrid" Grid.Column="1">

@@ -19,20 +19,23 @@ namespace ERV
 	/// </summary>
 	public partial class PopUpWindow : Window
 	{
-		public PopUpWindow()
+		public PopUpWindow(string UserName, string VacationSickTrip)
 		{
 			InitializeComponent();
+			PopUpWindowTextBlock.Text = "Unesi " + VacationSickTrip + " za korisnika: " + UserName;
 		}
 
 		private void PopUpCalendar_Loaded(object sender, RoutedEventArgs e)
 		{
 			//Default selected month is the previous month
 			PopUpCalendar.DisplayDate = DateTime.Now.AddMonths(-1);
+
 		}
 
 		private void PopUpButton_Click(object sender, RoutedEventArgs e)
 		{
 			this.Close();
 		}
+
 	}
 }

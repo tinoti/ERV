@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,7 @@ namespace ERV
 		List<User> ListOfUserObject = new List<User>();
 		List<string> UsersList = new List<string>();
 		Helpers Helpers = new Helpers();
+		ExcelMethod ExcelMethod = new ExcelMethod();
 
 		//Custom properties for calendar
 		private void SelectMonthCalendar_Loaded(object sender, RoutedEventArgs e)
@@ -92,7 +94,6 @@ namespace ERV
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 
-					
 
 			//Create users and add them to list
 			Helpers.LoadUsersInList(UsersList);
@@ -162,6 +163,7 @@ namespace ERV
 			File.Move(tempFile, FullPath);
 
 			//Reload window
+
 			System.Windows.Forms.Application.Restart();
 			System.Windows.Application.Current.Shutdown();
 		}
@@ -200,49 +202,47 @@ namespace ERV
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			
-
-
-			//Check what checkboxes are ticked in every user
+			//Loops through each user checking what checkbox was ticked, promting a select dates window for each checkbox ticked and changing the values on each of the selected date to true
 			foreach (User user in ListOfUserObject)
 			{
 				//Fill user with the days from the selected month
 				user.FillListWithDates((DateTime)SelectMonthCalendar.SelectedDate);
 
-
-
 				//Vacation handler
-				if ((bool)user.CheckBoxList.FirstOrDefault(b => b.Name == "vacation").IsChecked)
-				{
-					//Display calendar
-					PopUpWindow PopUpWindow = new PopUpWindow();
-
-					PopUpWindow.Owner = App.Current.MainWindow;
-					GrayRectangle.Visibility = Visibility.Visible;
-					
-					PopUpWindow.ShowDialog();
-					GrayRectangle.Visibility = Visibility.Hidden;
-					var dates = PopUpWindow.PopUpCalendar.SelectedDates;
+				Helpers.VacationHandler(user, GrayRectangle);
 
 
-					foreach(DateTime date in dates)
-					{
-						foreach(Date userDate in user.Dates)
-						{
-							if(date == userDate.CurrentDate)
-							{
-								userDate.Vacation = true;
-							}
-						}
-					}
-
-					MessageBox.Show("a");
+				//Trip handler
+				Helpers.TripHandler(user, GrayRectangle);
 
 
-				}
+				//Sick handler
+				Helpers.SickHandler(user, GrayRectangle);
 
-			
+
+				//Initialize excel app
+				Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+				Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+
+				ExcelMethod.Initialize(out xlWorkBook, out xlWorkSheet);
+
+				//Format the excel sheet
+				ExcelMethod.Format(xlWorkSheet);
+
+				//Add static text to the sheet
+				ExcelMethod.AddStaticText(xlWorkSheet, user.Name, (DateTime)SelectMonthCalendar.SelectedDate);
+
+				//Save excel file
+				xlWorkBook.SaveAs(SaveLocationTextBox.Text + "\\" + user.Name, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
+				false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
+				Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+
+				xlWorkBook.Close();
+
 			}
 
+			
 
 		}
 

@@ -81,5 +81,81 @@ namespace ERV.Method
 			return Button;
 		}
 
+		//Vacation handler
+		public void VacationHandler(User user, System.Windows.Shapes.Rectangle GrayRectangle)
+		{
+			//Check if the checkbox was ticked
+			if ((bool)user.CheckBoxList.FirstOrDefault(b => b.Name == "vacation").IsChecked)
+			{
+				//Display calendar
+				PopUpWindow PopUpWindow = new PopUpWindow(user.Name, "godišnji");
+
+				PopUpWindow.Owner = App.Current.MainWindow;
+				GrayRectangle.Visibility = Visibility.Visible;
+
+				PopUpWindow.ShowDialog();
+				GrayRectangle.Visibility = Visibility.Hidden;
+
+				//Fill the selected dates in the dates variable
+				var dates = PopUpWindow.PopUpCalendar.SelectedDates;
+
+				//Match selected dates in the user dates and set the vacation on that dates to true
+				foreach (DateTime date in dates)
+				{					
+					user.Dates.FirstOrDefault(b => b.CurrentDate == date).Vacation = true;
+				}
+
+			}
+		}
+
+		//Trip handler
+		public void TripHandler(User user, System.Windows.Shapes.Rectangle GrayRectangle)
+		{
+			if ((bool)user.CheckBoxList.FirstOrDefault(b => b.Name == "trip").IsChecked)
+			{
+				//Display calendar
+				PopUpWindow PopUpWindow = new PopUpWindow(user.Name, "putovanje");
+
+				PopUpWindow.Owner = App.Current.MainWindow;
+				GrayRectangle.Visibility = Visibility.Visible;
+
+				PopUpWindow.ShowDialog();
+				GrayRectangle.Visibility = Visibility.Hidden;
+
+				//Fill the selected dates in the dates variable
+				var dates = PopUpWindow.PopUpCalendar.SelectedDates;
+
+				foreach (DateTime date in dates)
+				{
+					user.Dates.FirstOrDefault(b => b.CurrentDate == date).Trip = true;
+				}
+
+			}
+		}
+
+		//Sick handler
+		public void SickHandler(User user, System.Windows.Shapes.Rectangle GrayRectangle)
+		{
+			if ((bool)user.CheckBoxList.FirstOrDefault(b => b.Name == "sick").IsChecked)
+			{
+				//Display calendar
+				PopUpWindow PopUpWindow = new PopUpWindow(user.Name, "bolovanje");
+
+				PopUpWindow.Owner = App.Current.MainWindow;
+				GrayRectangle.Visibility = Visibility.Visible;
+
+				PopUpWindow.ShowDialog();
+				GrayRectangle.Visibility = Visibility.Hidden;
+
+				//Fill the selected dates in the dates variable
+				var dates = PopUpWindow.PopUpCalendar.SelectedDates;
+
+				foreach (DateTime date in dates)
+				{
+					user.Dates.FirstOrDefault(b => b.CurrentDate == date).Sick = true;
+				}
+
+			}
+		}
 	}
 }
