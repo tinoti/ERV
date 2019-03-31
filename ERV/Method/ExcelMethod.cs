@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ERV.Model;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -146,6 +147,71 @@ namespace ERV.Method
 			xlWorkSheet.Range["Q35"].Formula = "=SUM(Q4:Q34)";
 			xlWorkSheet.Range["R35"].Formula = "=SUM(R4:R34)";
 
+		}
+
+		//Write data to excel
+		public void WriteData(List<Date> Dates, Excel.Worksheet xlWorkSheet)
+		{
+
+			int i = 4;
+			string WorkingHours;
+			string Vacation; // Q
+			string Trip; // N
+			string Sick; // R
+			string WorkingDayHours; //J
+			foreach (Date Date in Dates)
+			{
+				//Write the date
+				string DateField = "B" + i;			
+				xlWorkSheet.Range[DateField].Value = Date.CurrentDate.ToString("dd.MM.yy");
+
+				
+
+				//Check for saturday or sunday
+				if(Date.CurrentDate.DayOfWeek.ToString() == "Saturday" ||Date.CurrentDate.DayOfWeek.ToString() == "Sunday")
+				{
+					i++;
+					continue;
+				}
+
+				//Write working hours
+				WorkingHours = "F" + i;
+				xlWorkSheet.Range[WorkingHours].Value = "8";
+
+				//Check for vacation, trip or sick
+				if (Date.Vacation == true)
+				{
+					Vacation = "Q" + i;
+					xlWorkSheet.Range[Vacation].Value = "8";
+					i++;
+					continue;
+				}
+				else if (Date.Trip == true)
+				{
+					Trip = "N" + i;
+					xlWorkSheet.Range[Trip].Value = "8";
+					i++;
+					continue;
+				}
+				else if (Date.Sick == true)
+				{
+					Sick = "R" + i;
+					xlWorkSheet.Range[Sick].Value = "8";
+					i++;
+					continue;
+				}
+
+				string StartingHour = "C" + i;
+				string EndingHour = "D" + i;
+				WorkingDayHours = "J" + i;
+				xlWorkSheet.Range[StartingHour].Value = "8";
+				xlWorkSheet.Range[EndingHour].Value = "16";
+				xlWorkSheet.Range[WorkingDayHours].Value = "8";
+
+				i++;
+
+
+			}
 		}
 
 

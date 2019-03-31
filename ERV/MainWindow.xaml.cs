@@ -232,6 +232,9 @@ namespace ERV
 				//Add static text to the sheet
 				ExcelMethod.AddStaticText(xlWorkSheet, user.Name, (DateTime)SelectMonthCalendar.SelectedDate);
 
+				//Write data to excel
+				ExcelMethod.WriteData(user.Dates, xlWorkSheet);
+
 				//Save excel file
 				xlWorkBook.SaveAs(SaveLocationTextBox.Text + "\\" + user.Name, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
 				false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
@@ -240,9 +243,15 @@ namespace ERV
 
 				xlWorkBook.Close();
 
+				
+
 			}
 
-			
+			//Reload window
+			System.Windows.Forms.Application.Restart();
+			System.Windows.Application.Current.Shutdown();
+
+
 
 		}
 
