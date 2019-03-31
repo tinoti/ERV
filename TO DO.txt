@@ -1,0 +1,10 @@
+Fix bug when the calendar pops up and the Ok button needs to be clicked twice to work.
+
+Test the application for further bugs.
+
+Add a new "Disable user" checkbox to users. If ticked, the user will be skipped in the writing process.
+
+See if the any code can be refactured
+
+Write documentation
+

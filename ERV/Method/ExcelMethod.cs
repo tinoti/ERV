@@ -201,6 +201,7 @@ namespace ERV.Method
 					continue;
 				}
 
+				//if no vacation, trip or sick is checked then write the normal 8 to 16 working hour
 				string StartingHour = "C" + i;
 				string EndingHour = "D" + i;
 				WorkingDayHours = "J" + i;
